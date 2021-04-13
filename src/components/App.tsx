@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import About from "../pages/About";
+import ClientDetail from "../pages/ClientDetail";
 import Home, { Banner } from "../pages/Home";
 
 const App = () => {
@@ -22,6 +23,10 @@ const App = () => {
 
         <Route path="/about" exact>
           <About />
+        </Route>
+
+        <Route path="/client/:id" exact>
+          <ClientDetail />
         </Route>
       </Switch>
     </Router>
