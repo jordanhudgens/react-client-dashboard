@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SlidingPane from "react-sliding-pane";
 import "react-sliding-pane/dist/react-sliding-pane.css";
@@ -26,8 +26,13 @@ const data = [
 const ClientDetail = () => {
   const { id }: { id: string } = useParams();
   const [isPaneOpen, setIsPaneOpen] = useState(false);
+  const [updates, setUpdates] = useState([]);
 
-  const updateRenderer = data.map((dateOfWorkPerformed: any) => (
+  useEffect(() => {
+    setUpdates(data);
+  }, []);
+
+  const updateRenderer = updates.map((dateOfWorkPerformed: any) => (
     <div key={dateOfWorkPerformed.date}>
       {dateOfWorkPerformed.date}
 
