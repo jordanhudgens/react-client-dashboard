@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import SlidingPane from "react-sliding-pane";
-import "react-sliding-pane/dist/react-sliding-pane.css";
+
+import UpdateFormPane from "../components/updates/UpdateFormPane";
 
 const data = [
   {
@@ -22,6 +22,12 @@ const data = [
     ],
   },
 ];
+
+// [x] turn pane into dedicated component
+// [ ] build out form
+// [ ] send submitted form data to ClientDetail component
+// [ ] add to ClientDetail state
+// [ ] reset form
 
 const ClientDetail = () => {
   const { id }: { id: string } = useParams();
@@ -44,25 +50,12 @@ const ClientDetail = () => {
     </div>
   ));
 
-  const formPane = (
-    <SlidingPane
-      className="some-custom-class"
-      overlayClassName="some-custom-overlay-class"
-      isOpen={isPaneOpen}
-      title="Hey, it is optional pane title.  I can be React component too."
-      subtitle="Optional subtitle."
-      onRequestClose={() => {
-        setIsPaneOpen(!isPaneOpen);
-      }}
-    >
-      <div>And I am pane content. BTW, what rocks?</div>
-      <br />
-    </SlidingPane>
-  );
-
   return (
     <div>
-      {formPane}
+      <UpdateFormPane
+        isOpen={isPaneOpen}
+        handleClose={() => setIsPaneOpen(false)}
+      />
       <a onClick={() => setIsPaneOpen(true)}>New Update</a>
       {updateRenderer}
     </div>
