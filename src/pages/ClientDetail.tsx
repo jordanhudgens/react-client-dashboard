@@ -24,7 +24,7 @@ const data = [
 ];
 
 // [x] turn pane into dedicated component
-// [ ] build out form
+// [x] build out form
 // [ ] send submitted form data to ClientDetail component
 // [ ] add to ClientDetail state
 // [ ] reset form
